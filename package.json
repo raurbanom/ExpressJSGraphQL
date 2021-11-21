@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/runtime": "^7.15.4",
     "babel-node": "^0.0.1-security",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^16.0.1"

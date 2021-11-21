@@ -12,10 +12,35 @@ app.get("/", (req, res) => {
     res.send("GET Request Called");
 });
 
+class Client {
+    constructor(id, { firstName, lastName, company, email }) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.company = company;
+        this.email = email;
+    }
+}
+
+const clientsDB = {};
+
 // Resolvers
 const root = {
-    hola: () => {
-        return 'Hello world!';
+    client: () => {
+        return {
+            "id": 1234567890,
+            "firstName": "Richar ",
+            "lastName": "Urbano M",
+            "company": "Kymera Lab",
+            "email": "raurbanom@kymera.com"
+        };
+    },
+
+    createClient: ({ input }) => {
+        const id = require("crypto").randomBytes(10).toString("hex");
+
+        clientsDB[id] = input;
+        return new Client(id, input);
     }
 };
 
