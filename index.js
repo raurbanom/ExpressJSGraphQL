@@ -40,6 +40,7 @@ const root = {
         const id = require("crypto").randomBytes(10).toString("hex");
 
         clientsDB[id] = input;
+
         return new Client(id, input);
     }
 };
