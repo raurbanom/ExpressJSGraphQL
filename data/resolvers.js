@@ -14,18 +14,19 @@ class Client {
 const clientsDB = {};
 
 // Resolvers
-const resolvers = {
-    getClient: ({ id }) => {
-        return new Client(id, clientsDB[id]);
+export const resolvers = {
+    Query: {
+        getClient: ({ id }) => {
+            return new Client(id, clientsDB[id]);
+        }
     },
+    Mutation: {
+        createClient: (_, { input }) => {
+            const id = require("crypto").randomBytes(10).toString("hex");
 
-    createClient: ({ input }) => {
-        const id = require("crypto").randomBytes(10).toString("hex");
+            clientsDB[id] = input;
 
-        clientsDB[id] = input;
-
-        return new Client(id, input);
+            return new Client(id, input);
+        }
     }
 };
-
-export default resolvers;

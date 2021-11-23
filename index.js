@@ -2,8 +2,7 @@ import express from "express";
 
 // GraphQL
 import { graphqlHTTP } from "express-graphql";
-import schema from "./schema";
-import resolvers from "./resolvers";
+import { schema } from "./data/schema";
 
 const app = express();
 const port = parseInt(process.env.PORT, 10) || 4040;
@@ -16,7 +15,6 @@ app.get("/", (req, res) => {
 // The root provides a resolver function for each API endpoint
 app.use("/graphql", graphqlHTTP({
     schema: schema,
-    rootValue: resolvers,
     graphiql: true
 }));
 
