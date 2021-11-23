@@ -16,7 +16,7 @@ const clientsDB = {};
 // Resolvers
 export const resolvers = {
     Query: {
-        getClient: ({ id }) => {
+        getClient: (_, { id }) => {
             return new Client(id, clientsDB[id]);
         }
     },
