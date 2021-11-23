@@ -15,11 +15,11 @@ const schema = buildSchema(`
         firstName: String!
         lastName: String!
         company: String!
-        email: String!
+        email: String
     }
 
     type Query {
-        client: Client
+        getClient (id: ID): Client
     }
 
     type Mutation {
