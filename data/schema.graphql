@@ -48,7 +48,8 @@ enum ClientType {
 # Query
 
 type Query {
-    getClient (id: ID): Client
+    getClients(limit: Int): [Client]
+    getClient(id: ID): Client
 }
 
 # Mutation
@@ -56,4 +57,6 @@ type Query {
 """ Mutation to create a new Client """
 type Mutation {
     createClient(input: ClientInput): Client
+    updateClient(input: ClientInput): Client
+    deleteClient(id: ID!): String
 }
